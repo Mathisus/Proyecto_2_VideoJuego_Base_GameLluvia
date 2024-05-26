@@ -29,6 +29,7 @@ public class ParachuteGame extends ApplicationAdapter {
        Texture gota = new Texture(Gdx.files.internal("drop.png"));
        Texture gotaMala = new Texture(Gdx.files.internal("dropBad.png"));
        
+       
        Sound dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
       
 	      Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
@@ -49,13 +50,18 @@ public class ParachuteGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		
+		Texture background = new Texture(Gdx.files.internal("cielo.jpg"));
 		//limpia la pantalla con color azul obscuro.
+		float x=0 ,y=0;
 		ScreenUtils.clear(0, 0, 0.2f, 1);
 		//actualizar matrices de la cámara
 		camera.update();
 		//actualizar 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
+		batch.draw(background, x, y);
+		
 		//dibujar textos
 		font.draw(batch, "Gotas totales: " + tarro.getPuntos(), 5, 475);
 		font.draw(batch, "Vidas : " + tarro.getVidas(), 720, 475);
