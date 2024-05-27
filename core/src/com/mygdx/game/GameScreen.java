@@ -16,27 +16,25 @@ public class GameScreen implements Screen {
 	private SpriteBatch batch;	   
 	private BitmapFont font;
 	private Tarro tarro;
-	private Lluvia lluvia;
-
-	   
-	//boolean activo = true;
+	private Voladores lluvia;
+	
 
 	public GameScreen(final ParachuteGame game) {
 		this.game = game;
         this.batch = game.getBatch();
         this.font = game.getFont();
 		  // load the images for the droplet and the bucket, 64x64 pixels each 	     
-		  Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
-		  tarro = new Tarro(new Texture(Gdx.files.internal("bucket.png")),hurtSound);
+		  Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.wav"));
+		  Sound pointSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
+		  tarro = new Tarro(new Texture(Gdx.files.internal("bucket.png")),hurtSound,pointSound);
+		  
          
 	      // load the drop sound effect and the rain background "music" 
          Texture gota = new Texture(Gdx.files.internal("drop.png"));
          Texture gotaMala = new Texture(Gdx.files.internal("dropBad.png"));
-         
-         Sound dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
         
 	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
-         lluvia = new Lluvia(gota, gotaMala, dropSound, rainMusic);
+         lluvia = new Voladores(gota, gotaMala, rainMusic);
 	      
 	      // camera
 	      camera = new OrthographicCamera();

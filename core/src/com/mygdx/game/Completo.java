@@ -1,5 +1,21 @@
 package com.mygdx.game;
 
-public class Completo {
+import com.badlogic.gdx.graphics.Texture;
+
+public class Completo extends Obstacles implements Pickup{
+	
+	public Completo(Texture texture, float x, float y) {
+        super(texture, x, y);
+    }
+
+    @Override
+    public void de_buff(Tarro tarro) {
+        tarro.sumarPuntos(1);
+    }
+    
+    @Override
+    public void pick(Tarro tarro) {
+        de_buff(tarro);
+    }
 
 }

@@ -13,6 +13,7 @@ public class Tarro {
 	   private Rectangle bucket;
 	   private Texture bucketImage;
 	   private Sound sonidoHerido;
+	   private Sound sonidoPunto;
 	   private int vidas = 3;
 	   private int puntos = 0;
 	   private int velx = 400;
@@ -21,9 +22,10 @@ public class Tarro {
 	   private int tiempoHerido;
 	   
 	   
-	   public Tarro(Texture tex, Sound ss) {
+	   public Tarro(Texture tex, Sound sh, Sound sp) {
 		   bucketImage = tex;
-		   sonidoHerido = ss;
+		   sonidoHerido = sh;
+		   sonidoPunto = sp;
 	   }
 	   
 		public int getVidas() {
@@ -38,6 +40,7 @@ public class Tarro {
 		}
 		public void sumarPuntos(int pp) {
 			puntos+=pp;
+			sonidoPunto.play();
 		}
 		
 	

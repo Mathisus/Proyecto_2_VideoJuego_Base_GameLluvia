@@ -8,21 +8,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.gdx.math.Rectangle;
 
 public class Voladores {
     private Array<Obstacles> obstaculos;
     private long lastDropTime;
     private Texture completoTexture;
     private Texture palomaTexture;
-    private Sound dropSound;
     private Music rainMusic;
     private float velocidadCaida;
 
-    public Voladores(Texture completoTexture, Texture palomaTexture, Sound dropSound, Music rainMusic) {
+    public Voladores(Texture completoTexture, Texture palomaTexture, Music rainMusic) {
         this.completoTexture = completoTexture;
         this.palomaTexture = palomaTexture;
-        this.dropSound = dropSound;
         this.rainMusic = rainMusic;
         this.velocidadCaida = 300; 
     }
@@ -40,9 +37,9 @@ public class Voladores {
 
         Obstacles obstaculo;
         if (MathUtils.random(1, 10) < 5) {
-        	obstaculo = (Obstacles) new Paloma(palomaTexture, x, y);
+        	obstaculo = new Paloma(palomaTexture, x, y);
         } else {
-        	obstaculo = (Obstacles) new Completo(completoTexture, x, y);
+        	obstaculo = new Completo(completoTexture, x, y);
         }
 
         obstaculos.add(obstaculo);
@@ -91,7 +88,6 @@ public class Voladores {
     }
 
     public void destruir() {
-        dropSound.dispose();
         rainMusic.dispose();
     }
 

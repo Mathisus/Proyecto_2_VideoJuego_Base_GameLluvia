@@ -1,5 +1,5 @@
 package com.mygdx.game;
 
-public class Pickup {
-
+public interface Pickup {
+	void pick(Tarro tarro);
 }
