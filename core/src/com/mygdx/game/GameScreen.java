@@ -49,7 +49,6 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void render(float delta) {
-		//limpia la pantalla con color azul obscuro.
 		float x=0, y=0;
 		Texture background = new Texture(Gdx.files.internal("cielo.jpg"));
 		ScreenUtils.clear(0, 0, 0.2f, 1);
