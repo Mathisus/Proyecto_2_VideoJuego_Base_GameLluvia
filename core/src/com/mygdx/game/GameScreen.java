@@ -25,16 +25,16 @@ public class GameScreen implements Screen {
         this.font = game.getFont();
 		  // load the images for the droplet and the bucket, 64x64 pixels each 	     
 		  Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.wav"));
-		  Sound pointSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-		  tarro = new Tarro(new Texture(Gdx.files.internal("bucket.png")),hurtSound,pointSound);
+		  Sound pointSound = Gdx.audio.newSound(Gdx.files.internal("punto.wav"));
+		  tarro = new Tarro(new Texture(Gdx.files.internal("paracaidista.png")),hurtSound,pointSound);
 		  
          
 	      // load the drop sound effect and the rain background "music" 
-         Texture gota = new Texture(Gdx.files.internal("drop.png"));
-         Texture gotaMala = new Texture(Gdx.files.internal("dropBad.png"));
+         Texture completo = new Texture(Gdx.files.internal("completo.png"));
+         Texture paloma = new Texture(Gdx.files.internal("paloma.png"));
         
-	     Music rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
-         lluvia = new Voladores(gota, gotaMala, rainMusic);
+	     Music music = Gdx.audio.newMusic(Gdx.files.internal("ost.mp3"));
+         lluvia = new Voladores(completo, paloma, music);
 	      
 	      // camera
 	      camera = new OrthographicCamera();
