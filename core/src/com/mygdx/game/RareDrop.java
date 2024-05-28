@@ -11,20 +11,20 @@ public class RareDrop extends Obstacles implements Pickup{
 		}
 		
 		@Override
-		public void de_buff(Tarro tarro) {
+		public void de_buff(Paratrooper paratrooper) {
 			if(tipo == 1) {
-				tarro.sumarVidas(1);
+				paratrooper.sumarVidas(1);
 			}else if(tipo == 2){
-				tarro.sumarVidas(2);
+				paratrooper.sumarVidas(2);
 			}else {
-				tarro.DesvanDeMiCasa();
+				paratrooper.DesvanDeMiCasa();
 			}
 			
 		}
 		
 		
 		@Override
-		public void pick(Tarro tarro){
-			de_buff(tarro);
+		public void pick(Paratrooper paratrooper){
+			de_buff(paratrooper);
 		}
 }

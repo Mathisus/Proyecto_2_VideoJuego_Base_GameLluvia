@@ -9,12 +9,12 @@ public class Completo extends Obstacles implements Pickup{
     }
 
     @Override
-    public void de_buff(Tarro tarro) {
+    public void de_buff(Paratrooper tarro) {
         tarro.sumarPuntos(1);
     }
     
     @Override
-    public void pick(Tarro tarro) {
+    public void pick(Paratrooper tarro) {
         de_buff(tarro);
     }
 
