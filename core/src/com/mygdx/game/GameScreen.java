@@ -26,15 +26,19 @@ public class GameScreen implements Screen {
 		  // load the images for the droplet and the bucket, 64x64 pixels each 	     
 		  Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.wav"));
 		  Sound pointSound = Gdx.audio.newSound(Gdx.files.internal("punto.wav"));
+		  Sound lifeSound = Gdx.audio.newSound(Gdx.files.internal("punto.wav"));
 		  tarro = new Tarro(new Texture(Gdx.files.internal("paracaidista.png")),hurtSound,pointSound);
 		  
          
 	      // load the drop sound effect and the rain background "music" 
          Texture completo = new Texture(Gdx.files.internal("completo.png"));
          Texture paloma = new Texture(Gdx.files.internal("paloma.png"));
+         Texture choripan1 = new Texture(Gdx.files.internal("choripan.png"));
+         Texture choripan2 = new Texture(Gdx.files.internal("sopaipa.png"));
+         Texture misil = new Texture(Gdx.files.internal("noctulo.png"));
         
 	     Music music = Gdx.audio.newMusic(Gdx.files.internal("ost.mp3"));
-         lluvia = new Voladores(completo, paloma, music);
+         lluvia = new Voladores(completo, paloma, choripan1, choripan2, misil,music);
 	      
 	      // camera
 	      camera = new OrthographicCamera();
@@ -71,7 +75,6 @@ public class GameScreen implements Screen {
 	       if (!lluvia.actualizarMovimiento(tarro)) {
 	    	  //actualizar HigherScore
 	    	  if (game.getHigherScore()<tarro.getPuntos())
-	    		  game.setHigherScore(tarro.getPuntos());  
 	    	  //ir a la ventana de finde juego y destruir la actual
 	    	  game.setScreen(new GameOverScreen(game));
 	    	  dispose();

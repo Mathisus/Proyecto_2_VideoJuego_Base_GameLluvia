@@ -14,12 +14,18 @@ public class Voladores {
     private long lastDropTime;
     private Texture completoTexture;
     private Texture palomaTexture;
+    private Texture choripanTexture1;
+    private Texture choripanTexture2;
+    private Texture misilTexture;
     private Music rainMusic;
     private float velocidadCaida;
 
-    public Voladores(Texture completoTexture, Texture palomaTexture, Music rainMusic) {
+    public Voladores(Texture completoTexture, Texture palomaTexture, Texture choripanTexture1,Texture choripanTexture2,Texture misilTexture, Music rainMusic) {
         this.completoTexture = completoTexture;
         this.palomaTexture = palomaTexture;
+        this.choripanTexture1 = choripanTexture1;
+        this.choripanTexture2 = choripanTexture2;
+        this.misilTexture = misilTexture;
         this.rainMusic = rainMusic;
         this.velocidadCaida = 300; 
     }
@@ -36,9 +42,15 @@ public class Voladores {
         float y = 480;
 
         Obstacles obstaculo;
-        if (MathUtils.random(1, 10) < 5) {
+        if (MathUtils.random(1, 11) < 7) {
         	obstaculo = new Paloma(palomaTexture, x, y);
-        } else {
+        } else if(MathUtils.random(1, 11) < 2) {
+        	RareDrop PlaceHolder = new RareDrop(null, 0, 0);
+        	RareDropSpawn rareDropSpawn = new RareDropSpawn();
+        	PlaceHolder = rareDropSpawn.porciento(choripanTexture1, choripanTexture2, misilTexture, x, y);
+			obstaculo = PlaceHolder;
+        }
+        else{
         	obstaculo = new Completo(completoTexture, x, y);
         }
 
@@ -48,7 +60,7 @@ public class Voladores {
 
     public boolean actualizarMovimiento(Tarro tarro) {
   
-        long intervaloSpawn = Math.max(200000000L, 1000000000 - tarro.getPuntos() * 800000000L);
+        long intervaloSpawn = Math.max(300000000L, 1000000000 - tarro.getPuntos() * 1000000000L);
 
         if (TimeUtils.nanoTime() - lastDropTime > intervaloSpawn) {
         	crearObstaculos();

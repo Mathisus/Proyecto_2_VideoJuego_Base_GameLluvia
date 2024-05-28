@@ -38,6 +38,11 @@ public class Tarro {
 		public Rectangle getArea() {
 			return bucket;
 		}
+		
+		public void sumarVidas(int vp) {
+			vidas+=vp;
+		}
+		
 		public void sumarPuntos(int pp) {
 			puntos+=pp;
 			sonidoPunto.play();
@@ -56,6 +61,9 @@ public class Tarro {
 		  herido = true;
 		  tiempoHerido=tiempoHeridoMax;
 		  sonidoHerido.play();
+	   }
+	   public void DesvanDeMiCasa(){
+		   vidas = 0;
 	   }
 	   public void dibujar(SpriteBatch batch) {
 		 if (!herido)  
