@@ -39,7 +39,7 @@ public class Voladores {
 
     private void crearObstaculos() {
         float x = MathUtils.random(0, 800 - 64);
-        float y = 480;
+        float y = -40;
 
         Obstacles obstaculo;
         if (MathUtils.random(1, 11) < 7) {
@@ -66,11 +66,11 @@ public class Voladores {
         	crearObstaculos();
         }
 
-        velocidadCaida = 300 + tarro.getPuntos() * 3;
+        velocidadCaida = 300 + tarro.getPuntos();
 
         for (int i = 0; i < obstaculos.size; i++) {
             Obstacles obstaculo = obstaculos.get(i);
-            obstaculo.getArea().y -= velocidadCaida * Gdx.graphics.getDeltaTime();
+            obstaculo.getArea().y += velocidadCaida * Gdx.graphics.getDeltaTime();
 
             if (obstaculo.getArea().y + 64 < 0) {
             	obstaculos.removeIndex(i);

@@ -52,7 +52,7 @@ public class Tarro {
 	   public void crear() {
 		      bucket = new Rectangle();
 		      bucket.x = 800 / 2 - 64 / 2;
-		      bucket.y = 20;
+		      bucket.y = 380;
 		      bucket.width = 64;
 		      bucket.height = 64;
 	   }
