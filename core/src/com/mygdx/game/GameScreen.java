@@ -15,7 +15,7 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
 	private SpriteBatch batch;	   
 	private BitmapFont font;
-	private Paratrooper paratrooper;
+	private Tarro tarro;
 	private Voladores lluvia;
 	
 
@@ -27,7 +27,7 @@ public class GameScreen implements Screen {
 		  Sound hurtSound = Gdx.audio.newSound(Gdx.files.internal("hurt.wav"));
 		  Sound pointSound = Gdx.audio.newSound(Gdx.files.internal("punto.wav"));
 		  Sound lifeSound = Gdx.audio.newSound(Gdx.files.internal("punto.wav"));
-		  paratrooper = new Paratrooper(new Texture(Gdx.files.internal("paracaidista.png")),hurtSound,pointSound);
+		  tarro = new Tarro(new Texture(Gdx.files.internal("paracaidista.png")),hurtSound,pointSound);
 		  
          
 	      // load the drop sound effect and the rain background "music" 
@@ -44,8 +44,8 @@ public class GameScreen implements Screen {
 	      camera = new OrthographicCamera();
 	      camera.setToOrtho(false, 800, 480);
 	      batch = new SpriteBatch();
-	      // creacion del paratrooper
-	      paratrooper.crear();
+	      // creacion del tarro
+	      tarro.crear();
 	      
 	      // creacion de la lluvia
 	      lluvia.crear();
@@ -64,24 +64,24 @@ public class GameScreen implements Screen {
 		batch.draw(background, x, y);
 		
 		//dibujar textos
-		font.draw(batch, "Completos : " + paratrooper.getPuntos(), 5, 475);
-		font.draw(batch, "Vidas : " + paratrooper.getVidas(), 670, 475);
+		font.draw(batch, "Completos devorados: " + tarro.getPuntos(), 5, 475);
+		font.draw(batch, "Vidas : " + tarro.getVidas(), 670, 475);
 		font.draw(batch, "HighScore : " + game.getHigherScore(), camera.viewportWidth/2-50, 475);
 		
-		if (!paratrooper.estaHerido()) {
-			// movimiento del paratrooper desde teclado
-	        paratrooper.actualizarMovimiento();        
+		if (!tarro.estaHerido()) {
+			// movimiento del tarro desde teclado
+	        tarro.actualizarMovimiento();        
 			// caida de la lluvia 
-	       if (!lluvia.actualizarMovimiento(paratrooper)) {
+	       if (!lluvia.actualizarMovimiento(tarro)) {
 	    	  //actualizar HigherScore
-	    	  if (game.getHigherScore()<paratrooper.getPuntos())
+	    	  if (game.getHigherScore()<tarro.getPuntos())
 	    	  //ir a la ventana de finde juego y destruir la actual
 	    	  game.setScreen(new GameOverScreen(game));
 	    	  dispose();
 	       }
 		}
 		
-		paratrooper.dibujar(batch);
+		tarro.dibujar(batch);
 		lluvia.actualizarDibujoLluvia(batch);
 		
 		batch.end();
@@ -115,7 +115,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-      paratrooper.destruir();
+      tarro.destruir();
       lluvia.destruir();
 
 	}

@@ -21,5 +21,5 @@ public abstract class Obstacles {
 		return area;
 	}
 
-	public abstract void de_buff(Paratrooper tarro);
+	public abstract void de_buff(Tarro tarro);
 }
