@@ -6,9 +6,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 	public class ParachuteGame extends Game {
 		
+		private static ParachuteGame instance;
 		private SpriteBatch batch;
 		private BitmapFont font;
 		private int higherScore;
+		
+		private ParachuteGame() {}
+
+		    public static ParachuteGame getInstance() {
+		    	if(instance == null) {
+		    		instance = new ParachuteGame();
+		    	}
+		    	return instance;
+		    }
 	
 		public void create() {
 			batch = new SpriteBatch();

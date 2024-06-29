@@ -18,7 +18,7 @@ public class Voladores {
     private Texture choripanTexture2;
     private Texture misilTexture;
     private Music rainMusic;
-    private float velocidadCaida;
+    private float Fallspeed;
 
     public Voladores(Texture completoTexture, Texture palomaTexture, Texture choripanTexture1,Texture choripanTexture2,Texture misilTexture, Music rainMusic) {
         this.completoTexture = completoTexture;
@@ -27,7 +27,7 @@ public class Voladores {
         this.choripanTexture2 = choripanTexture2;
         this.misilTexture = misilTexture;
         this.rainMusic = rainMusic;
-        this.velocidadCaida = 300; 
+        this.Fallspeed = 300; 
     }
 
     public void crear() {
@@ -66,12 +66,12 @@ public class Voladores {
         	crearObstaculos();
         }
 
-        velocidadCaida = 300 + tarro.getPuntos();
+        Fallspeed = 300 + tarro.getPuntos();
 
         for (int i = 0; i < obstaculos.size; i++) {
             Obstacles obstaculo = obstaculos.get(i);
-            obstaculo.getArea().y += velocidadCaida * Gdx.graphics.getDeltaTime();
-
+            obstaculo.getArea().y += Fallspeed * Gdx.graphics.getDeltaTime();
+           
             if (obstaculo.getArea().y + 64 < 0) {
             	obstaculos.removeIndex(i);
                 continue;
