@@ -22,8 +22,7 @@ public class RareDropSpawn implements InterfazRaredrop {
 			 temporal = 3;
 		 }
 		
-		RareDrop choripan = new RareDrop(texture, x, y);
-		choripan.tipo = temporal;
+		RareDrop choripan = new RareDrop(texture, x, y,temporal);
 		return choripan;
 	}
 

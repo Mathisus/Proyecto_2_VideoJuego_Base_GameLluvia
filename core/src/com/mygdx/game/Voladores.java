@@ -45,7 +45,7 @@ public class Voladores {
         if (MathUtils.random(1, 11) < 7) {
         	obstaculo = new Paloma(palomaTexture, x, y);
         } else if(MathUtils.random(1, 11) < 2) {
-        	RareDrop PlaceHolder = new RareDrop(null, 0, 0);
+        	RareDrop PlaceHolder = new RareDrop(null, 0, 0, 0);
         	RareDropSpawn rareDropSpawn = new RareDropSpawn();
         	PlaceHolder = rareDropSpawn.porciento(choripanTexture1, choripanTexture2, misilTexture, x, y);
 			obstaculo = PlaceHolder;
